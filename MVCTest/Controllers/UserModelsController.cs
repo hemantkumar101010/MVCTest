@@ -60,6 +60,15 @@ namespace MVCTest.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+        [HttpGet]
+
+        public bool CheckEmailExists(string email)
+        {
+            bool result = _context.Users.Any(x => x.Email == email);
+            return result;
+        }
+
+
         [AcceptVerbs("GET", "POST")]
         public  bool IsPhoneValid(string phoneNumber)
         {
